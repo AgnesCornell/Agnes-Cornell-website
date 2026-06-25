@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agnes Cornell — Political Science</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:        #faf8f4;
+      --surface:   #f2ede4;
+      --ink:       #1c1a17;
+      --ink-light: #5a5650;
+      --accent:    #7a3030;
+      --accent-lt: #c9a090;
+      --rule:      #d8d0c4;
+      --serif:     'EB Garamond', Georgia, serif;
+      --sans:      'Outfit', system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 4rem;
+      background: rgba(250,248,244,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    nav .logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    nav ul { list-style: none; display: flex; gap: 2.5rem; }
+    nav ul a {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    nav ul a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 70vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 72px;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem 5rem 8rem 8rem;
+    }
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+    }
+    .hero-text h1 {
+      font-size: clamp(3rem, 5vw, 5.2rem);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--ink-light);
+      max-width: 36ch;
+      margin-bottom: 3rem;
+      line-height: 1.65;
+    }
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.7rem 1.6rem;
+      border-radius: 2px;
+      transition: all .2s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: #5c2222; border-color: #5c2222; }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-panel {
+      background: var(--surface);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-photo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      background: var(--surface);
+    }
+    .hero-panel .hero-card {
+      position: relative;
+      z-index: 2;
+      background: rgba(250,248,244,0.93);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--rule);
+      padding: 1.8rem 2rem;
+      max-width: 280px;
+      width: 100%;
+    }
+    .hero-card .affiliation {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero-card h3 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .hero-card .contact-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+    }
+    .hero-card .contact-item:hover { color: var(--accent); }
+    .hero-card .contact-icon { font-size: 0.9rem; }
+    .divider-rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 1.5rem 0;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 0; }
+    .container { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
+    .wide-container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      max-width: 60px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-text h2 {
+      font-size: 2.4rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1.8rem;
+    }
+    .about-text h2 em { font-style: italic; color: var(--accent); }
+    .about-text p {
+      color: var(--ink-light);
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .sidebar-block { margin-bottom: 2.5rem; }
+    .sidebar-block h4 {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .sidebar-block ul { list-style: none; }
+    .sidebar-block ul li {
+      font-size: 0.92rem;
+      color: var(--ink-light);
+      padding: 0.3rem 0;
+      border-bottom: 1px solid var(--rule);
+      line-height: 1.5;
+    }
+    .sidebar-block ul li:last-child { border-bottom: none; }
+
+    /* ── RESEARCH ── */
+    #research { background: var(--surface); }
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 1rem;
+    }
+    .research-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      transition: transform .25s;
+    }
+    .research-card:hover { transform: translateY(-3px); }
+    .research-card .num {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      color: var(--accent-lt);
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+    }
+    .research-card h3 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+    .research-card p {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 1.7;
+    }
+
+    #research { background: var(--surface); }
+
+    #publications { background: var(--bg); }
+    .pub-section-title {
+      font-size: 1rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink-light);
+      margin: 2.5rem 0 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pub-section-title:first-child { margin-top: 0; }
+
+    .book-feature {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      background: var(--surface);
+      padding: 2.5rem;
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+    .book-cover {
+      width: 100px;
+      flex-shrink: 0;
+    }
+    .book-cover img {
+      width: 100px;
+      display: block;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+    .book-cover-fallback {
+      width: 100px; height: 140px;
+      background: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .book-cover-fallback span {
+      color: #fff;
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+    .book-info .book-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+    .book-info .book-meta {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 0.2rem;
+    }
+    .book-info .book-authors {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      margin-bottom: 0.8rem;
+    }
+    .book-info p {
+      font-size: 0.92rem;
+      color: var(--ink-light);
+      line-height: 1.65;
+      margin-bottom: 0.8rem;
+    }
+
+    .pub-item {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+    }
+    .pub-item:last-child { border-bottom: none; }
+    .pub-title {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+      line-height: 1.45;
+    }
+    .pub-meta {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--ink-light);
+    }
+    .pub-meta .journal { color: var(--accent); }
+    .pub-tag {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-lt);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-top: 0.35rem;
+    }
+    .pub-year {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      white-space: nowrap;
+    }
+
+    /* ── CV ── */
+    #cv { background: var(--surface); }
+    .cv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .cv-column h3 {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    .cv-entry {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cv-entry:last-child { border-bottom: none; }
+    .cv-entry .year {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      color: var(--ink-light);
+      margin-bottom: 0.25rem;
+    }
+    .cv-entry .title {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 0.2rem;
+    }
+    .cv-entry .subtitle {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      color: var(--ink-light);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--surface); color: var(--ink); padding: 6rem 0; border-top: 1px solid var(--rule); }
+    #contact .section-label { color: var(--accent); }
+    #contact .section-label::after { background: var(--rule); }
+    #contact h2 {
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+    }
+    #contact h2 em { font-style: italic; color: var(--accent); }
+    #contact p {
+      color: rgba(250,248,244,0.65);
+      max-width: 48ch;
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .contact-block h4 {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+    .contact-block a, .contact-block p {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.35rem;
+      transition: color .2s;
+    }
+    .contact-block a:hover { color: var(--accent); }
+    .social-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+    .social-link {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.55rem 1.2rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-light);
+      transition: all .2s;
+    }
+    .social-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list { display: flex; flex-direction: column; gap: 0; }
+    .project-item {
+      padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .project-item:last-child { border-bottom: 1px solid var(--rule); }
+    .project-header { margin-bottom: 0.8rem; }
+    .project-role {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .project-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .project-title a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      transition: border-color .2s, color .2s;
+    }
+    .project-title a:hover { color: var(--accent); border-color: var(--accent); }
+    .project-desc {
+      font-size: 0.95rem;
+      color: var(--ink-light);
+      line-height: 1.75;
+      max-width: 72ch;
+    }
+    .project-meta {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    .project-meta span {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      color: var(--ink-light);
+    }
+    .project-meta strong {
+      color: var(--ink);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    footer p {
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-eyebrow { animation: fadeUp .6s ease both; }
+    .hero-text h1  { animation: fadeUp .6s .1s ease both; }
+    .hero-tagline  { animation: fadeUp .6s .2s ease both; }
+    .hero-links    { animation: fadeUp .6s .3s ease both; }
+    .hero-card     { animation: fadeUp .6s .4s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      nav ul { gap: 1.5rem; }
+      #home { grid-template-columns: 1fr; }
+      .hero-text { padding: 5rem 2.5rem 3rem; }
+      .hero-panel { padding: 3rem 2.5rem; min-height: 360px; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .research-grid { grid-template-columns: 1fr; }
+      .cv-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .book-feature { grid-template-columns: 1fr; }
+      .book-spine { display: none; }
+    }
+    @media (max-width: 600px) {
+      nav ul { display: none; }
+      .hero-text h1 { font-size: 2.8rem; }
+      section { padding: 5rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#home" class="logo">Agnes Cornell</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#wip">Work in Progress</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Political Science · University of Gothenburg</p>
+    <h1>Agnes<br><em>Cornell</em></h1>
+    <div class="hero-links">
+      <a href="#research" class="btn btn-primary">Research</a>
+      <a href="#publications" class="btn btn-outline">Publications</a>
+      <a href="mailto:agnes.cornell@pol.gu.se" class="btn btn-outline">Contact</a>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <img src="agnes_cornell.jpg" alt="Agnes Cornell" class="hero-photo" />
+    <div class="hero-card">
+      <p class="affiliation">University of Gothenburg</p>
+      <h3>Associate Professor</h3>
+      <p>Department of Political Science</p>
+      <hr class="divider-rule" />
+      <a href="mailto:agnes.cornell@pol.gu.se" class="contact-item">
+        <span class="contact-icon">✉</span> agnes.cornell@pol.gu.se
+      </a>
+      <a href="https://scholar.google.com/citations?user=rNp4SYsAAAAJ" target="_blank" class="contact-item">
+        <span class="contact-icon">◎</span> Google Scholar
+      </a>
+      <a href="https://x.com/cornell_agnes" target="_blank" class="contact-item">
+        <span class="contact-icon">✕</span> @cornell_agnes
+      </a>
+      <a href="https://www.linkedin.com/in/agnes-cornell-290a98234/" target="_blank" class="contact-item">
+        <span class="contact-icon">in</span> LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>State capacity, bureaucracy, <em>and democracy</em></h2>
+        <p>
+          I am an Associate Professor at the Department of Political Science, University of Gothenburg.
+        </p>
+        <p>
+          My research lies at the intersection of public administration and comparative politics, and centers on three themes. The first concerns the relationship between citizens and the state — how citizens interact with public institutions and their representatives, and what shapes citizens' compliance and trust in the state. The second concerns bureaucracy, both its historical development and its contemporary role in governance. The third concerns the conditions for democratic stability, including the effects of foreign aid on democratization.
+        </p>
+        <p>
+          My work has been published in journals such as the <em>Journal of Politics</em>, <em>Comparative Political Studies</em>, <em>Governance</em>, and the <em>European Journal of Political Research</em>.
+        </p>
+        <p>
+          I am co-author of <em>Democratic Stability in an Age of Crisis: Reassessing the Interwar Period</em> (Oxford University Press, 2020, with Jørgen Møller and Svend-Erik Skaaning).
+        </p>
+        <p>
+          I serve as Director of Studies for the Master's Programmes in Political Science and the Master's Programme in International Administration and Global Governance (IAGG) at the University of Gothenburg.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-block">
+          <h4>Research Areas</h4>
+          <ul>
+            <li>Bureaucracy — Historical and Contemporary</li>
+            <li>Citizen–State Relations</li>
+            <li>Democratic Stability</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wide-container">
+    <p class="section-label">Research</p>
+    <div class="research-grid">
+      <div class="research-card">
+        <p class="num">01</p>
+        <h3>Bureaucracy — Historical and Contemporary</h3>
+        <p>
+          Examining the development of bureaucracy over time — from the historical origins of meritocratic recruitment and administrative reform, to how contemporary bureaucratic structures affect policy implementation, economic growth, political accountability, and democratic quality.
+        </p>
+      </div>
+      <div class="research-card">
+        <p class="num">02</p>
+        <h3>Citizen–State Relations</h3>
+        <p>
+          Investigating how citizens interact with public institutions and their representatives — what shapes trust and compliance, how frontline bureaucrats affect citizen behaviour, and how civil society organisations navigate their relationship with the state.
+        </p>
+      </div>
+      <div class="research-card">
+        <p class="num">03</p>
+        <h3>Democratic Stability</h3>
+        <p>
+          Studying the conditions under which democracies survive or break down, drawing on comparative and historical evidence.
+        </p>
+      </div>
+    </div>
+
+    <div style="margin-top: 4rem;">
+      <p class="section-label" style="margin-bottom:2rem;">Ongoing Research Projects</p>
+      <div class="projects-list">
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-role">Principal Investigator</span>
+            <h3 class="project-title">
+              <a href="https://www.gu.se/en/research/sustaining-state-capacity-in-a-modern-state" target="_blank">
+              Sustaining State Capacity in a Modern State: Citizen–State Relations and Voluntary Compliance in Sweden
+              </a>
+            </h3>
+          </div>
+          <p class="project-desc">
+            This project examines citizen–state relations and voluntary compliance in Sweden. High-capacity states depend on citizens' willingness to comply with state policy, yet Sweden has received many citizens from countries where the state exercises power through coercion. The project uses Swedish register data to study compliance patterns, and tests how different background characteristics, such as country of origin, affect citizens' willingness to engage with the state.
+          </p>
+          <div class="project-meta">
+            <span><strong>Funder:</strong> Swedish Research Council (Vetenskapsrådet) · SEK 4,851,000</span>
+            <span><strong>Period:</strong> 2024–2026</span>
+            <span><strong>Research team:</strong> Rasmus Broms, Andrej Kokkonen, Simon Gren (all University of Gothenburg)</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-role">Principal Investigator</span>
+            <h3 class="project-title">
+              <a href="https://www.gu.se/en/research/unlawful-influence-in-swedish-municipalities-do-social-ties-matter-for-bureaucrats-vulnerability-and-ability-to-resist" target="_blank">
+                Unlawful Influence in Swedish Municipalities: Do Social Ties Matter for Bureaucrats' Vulnerability and Ability to Resist?
+              </a>
+            </h3>
+          </div>
+          <p class="project-desc">
+            Unlawful influence — including threats, harassment, and corruption — poses serious challenges to local government in Sweden. This project investigates how common such attempts are against frontline bureaucrats in municipalities, and whether social ties make them more vulnerable or more resilient. Combining register data, surveys, and interviews, the project generates new knowledge on how unlawful influence operates and how it can be prevented.
+          </p>
+          <div class="project-meta">
+            <span><strong>Funder:</strong> Forte (Swedish Research Council for Health, Working Life and Welfare) · SEK 4,938,000</span>
+            <span><strong>Period:</strong> 2026–2028</span>
+            <span><strong>Research team:</strong> Andrej Kokkonen (University of Gothenburg), Gissur Ó Erlingsson (Linköping University)</span>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-header">
+            <span class="project-role">Collaborator</span>
+            <h3 class="project-title">
+              <a href="https://www.gu.se/en/research/when-is-civil-society-civil-institutional-determinants-of-claim-making-and-implications-for-societal-development" target="_blank">
+                When is Civil Society Civil? Institutional Determinants of Claim-Making and Implications for Societal Development
+              </a>
+            </h3>
+          </div>
+          <p class="project-desc">
+            Civil society organisations are often seen as democracy's watchdog — defending rights and holding governments to account. Yet evidence from third-wave democracies also shows that civil society can engage in clientelism, trading political support for targeted benefits. This project examines when and why civil society organisations act in the public interest versus engaging in clientelistic exchanges. It uses surveys with embedded experiments on civil society leaders in Peru, and a field experiment, to shed new light on this dynamic.
+          </p>
+          <div class="project-meta">
+            <span><strong>Funder:</strong> Swedish Research Council (Vetenskapsrådet) · SEK 5,973,060</span>
+            <span><strong>Period:</strong> 2019–2026</span>
+            <span><strong>PI:</strong> Marcia Grimes (University of Gothenburg) · <strong>Research team:</strong> Agnes Cornell, Paula Muñoz (Universidad del Pacífico)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="container">
+    <p class="section-label">Publications</p>
+
+    <p class="pub-section-title">Book</p>
+    <div class="book-feature">
+      <div class="book-cover">
+        <img src="Book_cover.jpg"
+             alt="Democratic Stability in an Age of Crisis book cover" />
+        <div class="book-cover-fallback" style="display:none;">
+          <span>Oxford University Press</span>
+        </div>
+      </div>
+      <div class="book-info">
+        <p class="book-title">Democratic Stability in an Age of Crisis: Reassessing the Interwar Period</p>
+        <p class="book-meta">Oxford University Press · 2020</p>
+        <p class="book-authors">Agnes Cornell, Jørgen Møller &amp; Svend-Erik Skaaning</p>
+        <p>
+          A comprehensive reassessment of democratic breakdown and survival during the interwar years (1918–1939). Using a combination of comparative-historical analysis and quantitative methods, the book challenges common analogies with contemporary democratic backsliding and offers new insights into the conditions that made democracies resilient or fragile during a turbulent era.
+        </p>
+        <a href="https://global.oup.com/academic/product/democratic-stability-in-an-age-of-crisis-9780198858249" target="_blank" style="font-family:var(--sans);font-size:0.78rem;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-lt);padding-bottom:1px;">View at Oxford University Press →</a>
+      </div>
+    </div>
+
+    <p class="pub-section-title">Peer-reviewed articles</p>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1111/1475-6765.12553" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Voting for Bureaucracy? Contestation, Suffrage, and Meritocracy</a></p>
+        <p class="pub-meta">Andersen, David and Agnes Cornell · <span class="journal">European Journal of Political Research</span> 64(4): 1122–1145</p>
+        <span class="pub-tag">Bureaucracy</span>
+      </div>
+      <span class="pub-year">2023</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1177/00104140221115171" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Brokering Bureaucrats: How Bureaucrats and Civil Society Facilitate Clientelism Where Parties are Weak</a></p>
+        <p class="pub-meta">Cornell, Agnes and Marcia Grimes · <span class="journal">Comparative Political Studies</span> 56(6): 788–823</p>
+        <span class="pub-tag">Citizen–State Relations</span>
+      </div>
+      <span class="pub-year">2023</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1111/gove.12683" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Colonial Origins of Modern Bureaucracy? India and the Professionalization of the British Civil Service</a></p>
+        <p class="pub-meta">Cornell, Agnes and Ted Svensson · <span class="journal">Governance</span> 36(2): 533–553</p>
+        <span class="pub-tag">Bureaucracy</span>
+      </div>
+      <span class="pub-year">2023</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1177/0010414020912262" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Bureaucracy and Growth</a></p>
+        <p class="pub-meta">Cornell, Agnes, Carl Henrik Knutsen and Jan Teorell · <span class="journal">Comparative Political Studies</span> 53(14): 2246–2282</p>
+        <span class="pub-tag">Bureaucracy</span>
+      </div>
+      <span class="pub-year">2020</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1111/padm.12634" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Money Matters: The Role of Public Sector Wages in Corruption Prevention</a></p>
+        <p class="pub-meta">Cornell, Agnes and Anders Sundell · <span class="journal">Public Administration</span> 98(1): 244–260</p>
+        <span class="pub-tag">Bureaucracy</span>
+      </div>
+      <span class="pub-year">2020</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1177/0022343318823866" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Introducing the Historical Varieties of Democracy Dataset: Political Institutions in the Long 19th Century</a></p>
+        <p class="pub-meta">Knutsen, Carl Henrik, Jan Teorell, Tore Wig, Agnes Cornell, John Gerring, Haakon Gjerløw, Svend-Erik Skaaning, Daniel Ziblatt, Kyle L. Marquardt, Daniel Pemstein and Brigitte Seim · <span class="journal">Journal of Peace Research</span> 56(3): 440–451</p>
+        <span class="pub-tag">Democratic Stability</span>
+      </div>
+      <span class="pub-year">2019</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1111/gove.12283" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Cooking the Books: Bureaucratic Politicization and Policy Knowledge</a></p>
+        <p class="pub-meta">Boräng, Frida, Agnes Cornell, Marcia Grimes and Christian Schuster · <span class="journal">Governance</span> 31(1): 7–26</p>
+        <span class="pub-tag">Bureaucracy</span>
+      </div>
+      <span class="pub-year">2018</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1093/afraf/adw002" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Devolution and Corruption in Kenya: Everyone's Turn to Eat?</a></p>
+        <p class="pub-meta">D'Arcy, Michelle and Agnes Cornell · <span class="journal">African Affairs</span> 115(459): 246–273</p>
+        <span class="pub-tag">Citizen–State Relations</span>
+      </div>
+      <span class="pub-year">2016</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1086/681058" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Institutions as Incentives for Civic Action: Bureaucratic Structures, Civil Society, and Disruptive Protests</a></p>
+        <p class="pub-meta">Cornell, Agnes and Marcia Grimes · <span class="journal">The Journal of Politics</span> 77(3): 664–678</p>
+        <span class="pub-tag">Citizen–State Relations</span>
+      </div>
+      <span class="pub-year">2015</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1111/gove.12037" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Why Bureaucratic Stability Matters for the Implementation of Democratic Governance Programs</a></p>
+        <p class="pub-meta">Cornell, Agnes · <span class="journal">Governance</span> 27(2): 191–214</p>
+        <span class="pub-tag">Bureaucracy</span>
+      </div>
+      <span class="pub-year">2014</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1080/13510347.2014.960205" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Meritocratic Administration and Democratic Stability</a></p>
+        <p class="pub-meta">Cornell, Agnes and Victor Lapuente · <span class="journal">Democratization</span> 21(7): 1286–1304</p>
+        <span class="pub-tag">Bureaucracy</span>
+        <span class="pub-tag">Democratic Stability</span>
+      </div>
+      <span class="pub-year">2014</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1080/17531055.2013.869073" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Plus Ça Change? County-Level Politics in Kenya after Devolution</a></p>
+        <p class="pub-meta">Cornell, Agnes and Michelle D'Arcy · <span class="journal">Journal of Eastern African Studies</span> 8(1): 173–191</p>
+        <span class="pub-tag">Citizen–State Relations</span>
+      </div>
+      <span class="pub-year">2014</span>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1080/13510347.2012.659021" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">Does Regime Type Matter for the Impact of Democracy Aid on Democracy?</a></p>
+        <p class="pub-meta">Cornell, Agnes · <span class="journal">Democratization</span> 20(4): 642–667</p>
+        <span class="pub-tag">Democratic Stability</span>
+      </div>
+      <span class="pub-year">2013</span>
+    </div>
+
+    <p class="pub-section-title">Other research articles</p>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title"><a href="https://doi.org/10.1353/jod.2017.0040" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);">The Real Lessons of the Interwar Years</a></p>
+        <p class="pub-meta">Cornell, Agnes, Jørgen Møller and Svend-Erik Skaaning · <span class="journal">Journal of Democracy</span> 28(3): 14–28</p>
+        <span class="pub-tag">Democratic Stability</span>
+      </div>
+      <span class="pub-year">2017</span>
+    </div>
+
+    <p style="margin-top:2rem; font-family: var(--sans); font-size: 0.82rem; color: var(--ink-light);">
+      For book chapters, reports, and working papers, see
+      <a href="https://scholar.google.com/citations?user=rNp4SYsAAAAJ" target="_blank" style="color:var(--accent);">Google Scholar</a>.
+    </p>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="container">
+    <p class="section-label">Teaching</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Master's <em>Programmes</em></h2>
+        <p>
+          I serve as Director of Studies for three master's programmes at the Department of Political Science, University of Gothenburg. In this role I am, among other things, responsible for the academic coordination and development of the programmes and admissions.
+        </p>
+        <p>
+          I also teach at the doctoral level. My current doctoral course is <em>The Political Economy of Democratization</em>.
+        </p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-block">
+          <h4>Director of Studies</h4>
+          <ul>
+            <li>Master's Programme in Political Science (MAPS)</li>
+            <li>Master's Programme in International Administration and Global Governance (IAGG)</li>
+            <li>Master's Programme in Political Science: Environmental Governance and Behavior (MAPSE)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:3rem;">
+      <a href="cv.pdf" class="btn btn-outline">Download CV (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- WORK IN PROGRESS -->
+<section id="wip" style="background:var(--bg); padding: 7rem 0;">
+  <div class="container">
+    <p class="section-label">Work in Progress</p>
+
+    <p class="pub-section-title">Citizen–State Relations</p>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">Ancestral Institutions and Participation in Interventions for Children's Welfare among Immigrants in Sweden</p>
+        <p class="pub-meta">Broms, Rasmus, Agnes Cornell, Simon Gren and Andrej Kokkonen</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">Does Disinformation Diminish Compliance with the State? Evidence from the 2021 LVU-Campaign in Sweden</p>
+        <p class="pub-meta">Broms, Rasmus, Agnes Cornell, Simon Gren and Andrej Kokkonen</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">The Effects of Institutional Knowledge on Accountability Actions: Experimental Evidence from Civil Society Leaders in Peru</p>
+        <p class="pub-meta">Cornell, Agnes, Marcia Grimes and Paula Muñoz</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">Institutional Determinants of Civil Society Organizations' Demands and Tactics: Experimental Evidence from Peru</p>
+        <p class="pub-meta">Cornell, Agnes, Marcia Grimes and Paula Muñoz</p>
+      </div>
+    </div>
+
+    <p class="pub-section-title">Bureaucracy</p>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">From Patronage to Merit: The Transformation of Bureaucratic Recruitment in 19th Century Britain</p>
+        <p class="pub-meta">Cornell, Agnes and Cem Mert Dalli</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">Does Linguistic Identity Matter? Bureaucrat Background and Citizen Evaluations in the Basque Country</p>
+        <p class="pub-meta">Cornell, Agnes, Victor Lapuente, Georgios Xezonakis and Xabier Barandiaran</p>
+      </div>
+    </div>
+
+    <p class="pub-section-title">Democratic Stability</p>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">Representation in Divided Societies: Political Preferences in the Basque Country</p>
+        <p class="pub-meta">Cornell, Agnes, Victor Lapuente, Georgios Xezonakis and Xabier Barandiaran</p>
+      </div>
+    </div>
+
+    <div class="pub-item">
+      <div>
+        <p class="pub-title">Attitudes towards Political Violence in the Basque Country</p>
+        <p class="pub-meta">Xezonakis, Georgios, Agnes Cornell, Victor Lapuente and Xabier Barandiaran</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2>Get in <em>touch</em></h2>
+    <div class="contact-grid" style="grid-template-columns: 1fr;">
+      <div class="contact-block">
+        <h4>Email</h4>
+        <a href="mailto:agnes.cornell@pol.gu.se">agnes.cornell@pol.gu.se</a>
+      </div>
+    </div>
+    <div class="social-links">
+      <a href="https://scholar.google.com/citations?user=rNp4SYsAAAAJ" target="_blank" class="social-link">Google Scholar</a>
+      <a href="https://x.com/cornell_agnes" target="_blank" class="social-link">Twitter / X</a>
+      <a href="https://www.linkedin.com/in/agnes-cornell-290a98234/" target="_blank" class="social-link">LinkedIn</a>
+      <a href="https://www.gu.se/en/about/find-staff/agnescornell" target="_blank" class="social-link">GU Profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Agnes Cornell. All rights reserved.</p>
+  <p>Department of Political Science · University of Gothenburg</p>
+</footer>
+
+</body>
+</html>
